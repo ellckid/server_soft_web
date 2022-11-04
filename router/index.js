@@ -6,6 +6,7 @@ const authMiddleware = require('../middlewares/auth-middleware');
 const productController = require('../controllers/product-controller');
 
 router.post('/registration',
+    body('name'),
     body('email').isEmail(),
     body('password').isLength({ min: 3, max: 32 }),
     userController.registration);
