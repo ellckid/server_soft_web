@@ -20,6 +20,7 @@ router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
 router.get('/users', authMiddleware, userController.getUsers);
 router.get('/products', authMiddleware, productController.getAllProducts)
+router.get('/getorders', authMiddleware, orderController.getOrders)
 
 
 

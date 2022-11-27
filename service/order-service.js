@@ -7,6 +7,12 @@ class OrderService {
       order: neworder
     }
   }
+
+  async getOrders(userid) {
+    const orders = await orderModel.find({ userid })
+    return orders
+
+  }
 }
 
 module.exports = new OrderService();
