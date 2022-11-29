@@ -16,14 +16,14 @@ class OrderController {
       next(e);
     }
   }
-  async getOrders(req, res, next) {
+  async postOrders(req, res, next) {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return next(ApiError.BadRequest('ошибка в получении списка заказов ', errors.array()));
       }
       const { userid } = req.body;
-      const orders = await orderService.getOrders(userid);
+      const orders = await orderService.postOrders(userid);
       return res.json(orders);
     } catch (e) {
       next(e);

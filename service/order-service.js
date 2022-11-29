@@ -8,10 +8,11 @@ class OrderService {
     }
   }
 
-  async getOrders(userid) {
+  async postOrders(userid) {
     const orders = await orderModel.find({ userid })
-    return orders
-
+    return {
+      orders: orders
+    }
   }
 }
 
