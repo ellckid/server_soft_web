@@ -9,8 +9,8 @@ class OrderController {
       if (!errors.isEmpty()) {
         return next(ApiError.BadRequest('ошибка в создании нового заказа ! ', errors.array()));
       }
-      const { userid, orderlist, totalprice } = req.body;
-      const neworder = await orderService.addOrder(userid, orderlist, totalprice);
+      const { orderdate, userid, orderlist, totalprice } = req.body;
+      const neworder = await orderService.addOrder(orderdate, userid, orderlist, totalprice);
       return res.json(neworder);
     } catch (e) {
       next(e);
