@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build": "esbuild src/index.js --bundle --outfile=dist/out.js --platform=node --packages=external",
+    "test": "editorconfig-checker"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +24,8 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "editorconfig-checker": "^4.0.2",
+    "esbuild": "^0.16.14",
     "nodemon": "^2.0.20"
   }
 }
