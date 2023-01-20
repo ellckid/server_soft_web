@@ -506,15 +506,8 @@ var express = require("express");
 var cors = require("cors");
 var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
-var https = require("https");
-var fs = require("fs");
 var router = require_router();
 var errorMiddleware = require_error_middleware();
-var options = {
-  ca: fs.readFileSync("/etc/letsencrypt/live/ellckid.com/fullchain.pem"),
-  cert: fs.readFileSync("/etc/letsencrypt/live/ellckid.com/cert.pem"),
-  key: fs.readFileSync("/etc/letsencrypt/live/ellckid.com/privkey.pem")
-};
 var PORT = process.env.PORT || 5100;
 var app = express();
 app.use(express.json());
@@ -525,14 +518,13 @@ app.use(cors({
 }));
 app.use("/api", router);
 app.use(errorMiddleware);
-var server = https.createServer(options, app);
 var start = async () => {
   try {
     await mongoose.connect(process.env.DB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
-    server.listen(PORT, () => console.log("server started"));
+    app.listen(PORT, () => console.log("server started"));
   } catch (e) {
     console.log(e);
   }
