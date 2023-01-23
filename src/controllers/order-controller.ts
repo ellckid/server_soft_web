@@ -1,9 +1,9 @@
 const { validationResult } = require('express-validator');
 const ApiError = require('../exceptions/api-error');
 const orderService = require('../service/order-service');
-
+export { };
 class OrderController {
-    async addNewOrder(req, res, next) {
+    async addNewOrder(req: any, res: any, next: any) {
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -16,7 +16,7 @@ class OrderController {
             next(e);
         }
     }
-    async postOrders(req, res, next) {
+    async postOrders(req: any, res: any, next: any) {
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {

@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 
 class MailService {
+    transporter: any;
     constructor() {
         this.transporter = nodemailer.createTransport({
             // host: 'smtp.gmail.com',
@@ -12,9 +13,8 @@ class MailService {
                 pass: 'ldntcmradqmqbfjd'
             }
         })
-
     }
-    async sendActivationMail(to, link) {
+    async sendActivationMail(to: string, link: string) {
         await this.transporter.sendMail({
             from: "soft.web.mail.ru@gmail.com",
             to,

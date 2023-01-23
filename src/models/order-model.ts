@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+export { };
 
 const OrderSchema = new Schema({
     orderdate: { type: String, required: true },

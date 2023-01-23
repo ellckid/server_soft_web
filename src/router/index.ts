@@ -1,10 +1,12 @@
 const Router = require('express').Router;
 const userController = require('../controllers/user-controller');
-const router = new Router();
 const { body } = require('express-validator');
 const authMiddleware = require('../middlewares/auth-middleware');
 const productController = require('../controllers/product-controller');
 const orderController = require('../controllers/order-controller');
+
+const router = new Router();
+export { };
 
 
 router.post('/addorder', authMiddleware, orderController.addNewOrder)

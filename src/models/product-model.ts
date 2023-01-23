@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+export { };
 
 const ProductSchema = new Schema({
     title: { type: String, required: true },

@@ -1,7 +1,7 @@
 const productService = require("../service/product-service");
 
 class ProductController {
-    async getAllProducts(req, res, next) {
+    async getAllProducts(req: any, res: any, next: any) {
         try {
             const productData = await productService.findAll();
             return res.json(productData);
