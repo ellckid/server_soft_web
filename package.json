@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "esbuild src/index.js --bundle --outfile=dist/out.js --platform=node --packages=external",
+    "build": "esbuild src/index.ts --bundle --outfile=dist/out.ts --platform=node --packages=external",
     "test": "editorconfig-checker"
   },
   "author": "",
