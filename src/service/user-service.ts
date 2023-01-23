@@ -8,7 +8,7 @@ const ApiError = require('../exceptions/api-error');
 const userModel = require('../models/user-model');
 
 class userService {
-    async registration(name, email, password) {
+    async registration(name: string, email: string, password: string) {
         const candidate = await UserModel.findOne({ email });
         if (candidate) {
             throw ApiError.BadRequest('пользователь с такой почтой уже существует ! ');
@@ -28,7 +28,7 @@ class userService {
             user: userDto
         }
     }
-    async activate(activationLink) {
+    async activate(activationLink: string) {
         const user = await UserModel.findOne({ activationLink });
         if (!user) {
             throw ApiError.BadRequest('Неправильная ссылка активации ( ');
@@ -36,7 +36,7 @@ class userService {
         user.isActivated = true;
         await user.save();
     }
-    async login(email, password) {
+    async login(email: string, password: string) {
         const user = await userModel.findOne({ email });
         if (!user) {
             throw ApiError.BadRequest('Пользователь с таким email не найден (');
@@ -52,11 +52,11 @@ class userService {
 
         return { ...tokens, user: userDto };
     }
-    async logout(refreshToken) {
+    async logout(refreshToken: any) {
         const token = await tokenService.removeToken(refreshToken);
         return token;
     }
-    async refresh(refreshToken) {
+    async refresh(refreshToken: any) {
         if (!refreshToken) {
             throw ApiError.UnauthorizedError();
         }

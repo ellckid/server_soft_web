@@ -24,7 +24,7 @@ app.use(cors({
     origin: process.env.CLIENT_URL
 }));
 app.use('/api', router);
-app.use(errorMiddleware); // всегда последний
+app.use(errorMiddleware); // всегда последний 
 
 
 var server = https.createServer(options, app);
